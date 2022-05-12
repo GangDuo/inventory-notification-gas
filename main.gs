@@ -4,8 +4,6 @@ function sendMail() {
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = spreadsheet.getSheetByName('シート1');
   var rows = sheet.getDataRange().getValues();
-  for(let i = 1; i < rows.length; i++) {
-    let columns = rows[i];
-    console.log(columns[colEmail]);
-  }
+  var recipient = rows.slice(1).map(columns => columns[colEmail]);
+  console.log(recipient);
 }
