@@ -1,3 +1,18 @@
+const HowManyMonthsAgo = 2;
+const HowManyDaysIsDuration = 14;
+const HowManyMonthsInOneYear = 12;
+
+function main() {
+  var targets = [1,4,7,10];// 棚卸月
+  var xs = targets
+    .map(x => x - HowManyMonthsAgo)
+    .map(x => x < 0 ? x + HowManyMonthsInOneYear : x);
+
+  if(xs.includes((new Date).getMonth())) {
+    sendMail();
+  }
+}
+
 function sendMail() {
   var prop = PropertiesService.getScriptProperties().getProperties();
 
@@ -18,16 +33,15 @@ function sendMail() {
   });
 }
 
-// 棚卸月の2ヶ月前にメール配信する
 function targetMonth() {
   var d = new Date;
-  d.setMonth(d.getMonth() + 2);
+  d.setMonth(d.getMonth() + HowManyMonthsAgo);
   return d;
 }
 
 function deadlineForReply() {
   var d = new Date;
-  d.setDate(d.getDate() + 14);
+  d.setDate(d.getDate() + HowManyDaysIsDuration);
   return d;
 }
 
