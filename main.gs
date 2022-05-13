@@ -1,3 +1,5 @@
+const HowManyMonthsAgo = 2;
+
 function sendMail() {
   var prop = PropertiesService.getScriptProperties().getProperties();
 
@@ -18,10 +20,9 @@ function sendMail() {
   });
 }
 
-// 棚卸月の2ヶ月前にメール配信する
 function targetMonth() {
   var d = new Date;
-  d.setMonth(d.getMonth() + 2);
+  d.setMonth(d.getMonth() + HowManyMonthsAgo);
   return d;
 }
 
