@@ -1,4 +1,5 @@
 const HowManyMonthsAgo = 2;
+const HowManyDaysIsDuration = 14;
 
 function sendMail() {
   var prop = PropertiesService.getScriptProperties().getProperties();
@@ -28,7 +29,7 @@ function targetMonth() {
 
 function deadlineForReply() {
   var d = new Date;
-  d.setDate(d.getDate() + 14);
+  d.setDate(d.getDate() + HowManyDaysIsDuration);
   return d;
 }
 
