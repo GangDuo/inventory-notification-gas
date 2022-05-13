@@ -1,5 +1,17 @@
 const HowManyMonthsAgo = 2;
 const HowManyDaysIsDuration = 14;
+const HowManyMonthsInOneYear = 12;
+
+function main() {
+  var targets = [1,4,7,10];// 棚卸月
+  var xs = targets
+    .map(x => x - HowManyMonthsAgo)
+    .map(x => x < 0 ? x + HowManyMonthsInOneYear : x);
+
+  if(xs.includes((new Date).getMonth())) {
+    sendMail();
+  }
+}
 
 function sendMail() {
   var prop = PropertiesService.getScriptProperties().getProperties();
